@@ -1,0 +1,18 @@
+.Contact-containers {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 80%;
+  padding: 0;
+  margin: auto;
+  list-style: none;
+}
+
+.Contact-item {
+  text-align: center;
+  padding: 1em;
+}
+
+.Contact-item:hover {
+  cursor: pointer;
+}

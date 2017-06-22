@@ -1,0 +1,7 @@
+.App-Container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  max-width: 20em;
+  margin: 2em auto;
+}

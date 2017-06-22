@@ -1,0 +1,67 @@
+.Modal-container {
+  align-items: center;
+  background-color: rgba(244, 245, 247, .8);
+  border-radius: 70px;
+  display: flex;
+  height: 10em;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  width: 15em;
+}
+
+.btn {
+  border-radius: 20px;
+  display: block;
+  color: #fff;;
+  height: 40px;
+  width: 40px;
+  margin: 1em auto;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn + .btn {
+  display: inline;
+  margin-left: 25px;
+}
+
+.Answer-call-btn {
+  background: green;
+  border: 1px solid lightgreen;
+}
+
+.Decline-call-btn {
+  background: red;
+  border: 1px solid salmon;
+}
+
+.Ellipses-animation {
+  display: inline;
+  width: 3em;
+
+}
+
+.dot {
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: Ellipses-calling;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.dot2 {
+  animation-delay: .15s;
+}
+
+.dot3 {
+  animation-delay: .2s;
+}
+
+@keyframes Ellipses-calling {
+  from { opacity: 1;}
+  to { opacity: 0;}
+}
