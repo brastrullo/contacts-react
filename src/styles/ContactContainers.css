@@ -13,6 +13,11 @@
   padding: 1em;
 }
 
+.Contact-item + .Contact-item {
+  border-top: 1px solid lightgrey;
+}
+
 .Contact-item:hover {
+  background: lightgrey;
   cursor: pointer;
 }

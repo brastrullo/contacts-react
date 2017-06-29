@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from './Modal';
 
 function EllipsesAnimation(){
   return (
@@ -12,20 +11,16 @@ function EllipsesAnimation(){
 }
 
 class CallContactModal extends Component {
-  constructor(props) {
-    super(props);
-    this.hideModal = this.hideModal.bind(this);
-  }
-  
-  hideModal() {
-    this.props.handleModal();
+  hideModal = () => {
+    this.props.hideModal();
   }
   render() {
     return(
-      <Modal>
-        <span className="calling-contact-header">Calling {this.props.callContact}<EllipsesAnimation /></span>
+      <div>
+        <span className="calling-contact-header">Calling {this.props.callContact[0]}</span>
+        <div>{this.props.callContact[1]}<EllipsesAnimation /></div>
         <button className="btn Decline-call-btn" onClick={this.hideModal} >&#10006;</button>
-      </Modal>
+      </div>
     );
   }
 

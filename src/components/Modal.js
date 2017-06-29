@@ -2,29 +2,27 @@ import React, { Component } from 'react';
 import CallContactModal from './Modal-CallContact';
 import AddContactModal from './Modal-AddContact';
 
-function ModalContainer(props) {
-  return (
-    <div className="Modal-container">
-      <div className="flex-container">
-        {props.children}
-      </div>
-    </div>
-  );
-}
-
 class Modal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { modalType: null };
+  openModal = (modalType) => {
+    switch (modalType) {
+      case "CALL_CONTACT":
+        return <CallContactModal {...this.props} />;
+      case "ADD_CONTACT":
+        return <AddContactModal {...this.props} />;
+      default:
+        return null;
+    }
   }
 
   render() {
     return (
       <div className="Modal">
         <div className="Modal-background"></div>
-        <ModalContainer openModal={this.state.modalType}>
-          {this.props.children}
-        </ModalContainer>
+        <div className="Modal-container">
+          <div className="flex-container">
+            {this.openModal(this.props.modalType)}
+          </div>
+        </div>
       </div>
 
     );

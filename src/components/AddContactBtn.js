@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 
 class AddContactBtn extends Component {
-  constructor(props) {
-    super(props);
+  callHandler = (e) => {
+    e.preventDefault();
+    this.props.handleCall(e.target.innerHTML);
+  }
+
+  addContactModal = (e) => {
+    e.preventDefault();
+    this.props.handleBtn("ADD_CONTACT");
+    console.log("Clicked AddContactBtn");
   }
 
   render() {
     return (
-      <button onClick={this.addContact}>Add Contact</button>
+      <button onClick={this.addContactModal}>Add Contact</button>
     );
   }
 }
