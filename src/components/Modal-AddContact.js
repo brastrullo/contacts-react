@@ -20,12 +20,21 @@ class AddContactModal extends Component {
     const name = this.state.contact_name;
     const cell = this.state.contact_cell;
     const data = {id: id, contactName: name, contactCell: cell};
-    console.log("Form Submitted:" + JSON.stringify(data));
-    this.handleSubmit(data);
+    if (!this.isDupe(name)) {
+      console.log("Form Submitted:" + JSON.stringify(data));
+      this.handleSubmit(data);
+    } else {
+      alert("Contact: \"" + name + "\" is a duplicate. Please enter new contact.");
+    }
+  }
+
+  isDupe = (name) => {
+    var dupe = this.props.contactList.find(obj => obj.contactName === name);
+    return dupe ? true : false;
   }
 
   handleSubmit = (data) => {
-    this.props.addContact(data);
+    this.props.updateContacts(data);
     this.props.hideModal();
   }
 
