@@ -17,7 +17,12 @@
   border-top: 1px solid lightgrey;
 }
 
-.Contact-item:hover {
+.Contact-item:hover:not(.selected) {
   background: lightgrey;
   cursor: pointer;
+}
+
+.selected {
+  background: lightgreen;
+  color: white;
 }

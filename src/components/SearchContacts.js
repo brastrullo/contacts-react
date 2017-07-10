@@ -7,8 +7,8 @@ class SearchContacts extends Component {
   }
 
   handleKeyPress = (e) => {
-    var query = document.querySelector('#searchContacts').value.replace(/[^a-zA-Z0-9 ]/g, "");
-    var filtered = this.state.contactList.filter((contact) =>
+    let query = document.querySelector('#searchContacts').value.replace(/[^a-zA-Z0-9 ]/g, "");
+    let filtered = this.state.contactList.filter((contact) =>
       contact.contactName.toLowerCase().includes(query.toLowerCase()) ||
       contact.contactCell.includes(query)
     );
