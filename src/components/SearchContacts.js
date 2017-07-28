@@ -17,7 +17,14 @@ class SearchContacts extends Component {
 
   render() {
     return (
-      <input id="searchContacts" type="text" onKeyUp={this.handleKeyPress}/>
+      <input
+        className="Search-contacts"
+        id="searchContacts"
+        placeholder="Search Contacts"
+        type="search"
+        onInput={this.handleKeyPress}
+        onFocus={() => this.props.selectHandler(null)}
+      />
     );
   }
 }

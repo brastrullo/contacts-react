@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import CallContactModal from './Modal-CallContact';
 import AddContactModal from './Modal-AddContact';
 import EditContactModal from './Modal-EditContact';
+import DeleteContactModal from './Modal-DeleteContact';
+import Button from './Button';
 
-class Modal extends Component {  
+class Modal extends Component {
   openModal = (modalType) => {
     switch (modalType) {
       case "CALL_CONTACT":
@@ -12,6 +14,8 @@ class Modal extends Component {
         return <AddContactModal {...this.props} />;
       case "EDIT_CONTACT":
         return <EditContactModal {...this.props} />;
+      case "DEL_CONTACT":
+        return <DeleteContactModal {...this.props} />;
       default:
         return null;
     }
@@ -22,9 +26,13 @@ class Modal extends Component {
       <div className="Modal">
         <div className="Modal-background"></div>
         <div className="Modal-container">
-          <div className="flex-container">
-            {this.openModal(this.props.modalType)}
-          </div>
+          {!(this.props.modalType === "CALL_CONTACT" || this.props.modalType === "DEL_CONTACT") &&
+            <div className="Modal-header">
+              <span className="Modal-header-title">{this.props.modalType.replace("_", " ")}</span>
+              <Button buttonAction={this.props.hideModal} className="btn-close">CLOSE</Button>
+            </div>
+          }
+          {this.openModal(this.props.modalType)}
         </div>
       </div>
     );

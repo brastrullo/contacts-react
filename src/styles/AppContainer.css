@@ -1,9 +1,28 @@
+/*COLOR PALETTE*/
+/*#82D4BB#82C09A#82AC9F#829298#94778B*/
+/*#E0E2DB#D2D4C8#5F7470#9CBFA7#C9F299*/
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+
 .App-Container {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
   max-width: 20em;
   margin: 2em auto;
+  background: #E0E2DB;
+  box-shadow: 0 4px 8px 0 #c4c6c2;
 }
 
 .info {

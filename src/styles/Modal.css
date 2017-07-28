@@ -1,41 +1,90 @@
+/*COLOR PALETTE*/
+/*#82D4BB#82C09A#82AC9F#829298#94778B*/
+/*#E0E2DB#D2D4C8#5F7470#9CBFA7#C9F299*/
+
+/*TEXT*/
+/*color: #616161;*/
+/*color: #292828;*/
+/*color: #393838;*/
+/*font-family: 'Roboto Slab';*/
+/*font-family: 'Source Code Pro';*/
+
+.Modal {
+  margin: 5em auto;
+}
+
 .Modal-container {
   align-items: center;
-  background-color: rgba(244, 245, 247, .8);
-  border-radius: 70px;
   display: flex;
-  height: 10em;
+  /*height: 10em;*/
+  flex-flow: column nowrap;
   justify-content: center;
-  padding: 20px;
   margin: auto;
-  width: 15em;
+  background: #E0E2DB;
+  box-shadow: 0 4px 8px 0 #c4c6c2;
+  width: 24em;
 }
 
-.btn {
-  border-radius: 20px;
-  display: block;
-  color: #fff;;
-  height: 40px;
-  width: 40px;
-  margin: 1em auto;
+.Modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #82C09A;
+  height: 50px;
+  width: 100%;
 }
 
-.btn:hover {
-  cursor: pointer;
+.Modal-header-title {
+  color: #E0E2DB;
+  font-size: 1.5em;
+  padding: 10px;
+  text-align: center;
+  font-weight: 100;
+  text-transform: uppercase;
 }
 
-.btn + .btn {
-  display: inline;
-  margin-left: 25px;
+.Modal-form {
+  display: flex;
+  flex-flow: nowrap column;
+  width: 20em;
 }
 
-.Answer-call-btn {
-  background: green;
-  border: 1px solid lightgreen;
+.form-label {
+  margin: 1em 1em 0;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
 }
 
-.Decline-call-btn {
-  background: red;
-  border: 1px solid salmon;
+.form-input {
+  margin: .5em 1em;
+  box-sizing: border-box;
+  border: 1px solid rgb(223, 225, 218);
+  /*border: 1px solid #c8cbc3;*/
+  background: rgba(242, 242, 242, 0.8);
+  height: 2em;
+  color: #393838;
+  padding: .25em .5em;
+  font-family: 'Source Code Pro';
+  box-shadow: inset 0 1px 3px 1px rgba(167, 168, 163, 0.7);
+}
+
+.delete-contact-text {
+  padding: 1em;
+  text-align: center;
+}
+
+.calling-contact {
+  text-align: center;
+  padding: 2em;
+}
+
+.calling-contact-header {
+  font-size: 2em;
+}
+
+.calling-contact-num {
+  font-size: 1.8em;
+  color: #587e77;
+  font-weight: 800;
 }
 
 .Ellipses-animation {

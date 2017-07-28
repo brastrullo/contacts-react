@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/Button.css'
 
 class Button extends Component {
   buttonAction = () => {
@@ -7,9 +8,12 @@ class Button extends Component {
   }
 
   render() {
+    let btnClasses = this.props.className ? "btn " + this.props.className : "btn";
     return (
-      <button onClick={this.buttonAction}>{this.props.children}</button>
-    );
+      <button {...this.props} onClick={this.buttonAction} className={btnClasses}>
+        <span className="btn-text">{this.props.children}</span>
+    </button>
+  );
   }
 }
 

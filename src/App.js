@@ -44,34 +44,26 @@ class App extends Component {
     this.setState({ contactList: filteredContacts, contactsLength: filteredContacts.length});
   }
 
-  callHandler = (contactArray) => {
-    this.openModal("CALL_CONTACT");
-  }
-
   selectHandler = (contact) => {
     this.setState({selectedContact: contact});
   }
 
-  openModal = (modalType) => {
+  modalCtrl = (modalType) => {
     this.setState({modalType: modalType}, function() {
       console.log("App modalType: " + modalType);
     });
   }
 
-  updateContactList = (data) => {
-    let contactList = this.state.contactList;
-    let isNewId = contactList.findIndex((n) => n.id === data.id);
-    (isNewId === -1) ? contactList.push(data) : contactList.splice((isNewId), 1, data);
-    this.setState({ contactList: contactList, contactsLength: contactList.length}, function() {
-      console.log("App new total: " + this.state.contactsLength, (isNewId === -1) ? "| App new contact: " + JSON.stringify(data) : "| Edited contact: " + JSON.stringify(data));
+  updateContactHandler = (contactList) => {
+    this.setState({contactList: contactList, contactsLength: contactList.length
+    }, function() {
+      console.log("App new total: " + this.state.contactsLength);
     });
     return true;
-  }
+  };
 
   hideModal = () => {
-    this.setState({modalType: null, selectedContact: null}, function() {
-      console.log("App hideModal setState.modalType: " + this.state.modalType);
-    });
+    this.setState({modalType: null, selectedContact: null});
   }
 
   render() {
@@ -80,23 +72,24 @@ class App extends Component {
       <div className="App">
         {this.state.modalType ? (
           <Modal
-            updateContacts={this.updateContactList}
+            modalCtrl={this.modalCtrl}
+            updateContacts={this.updateContactHandler}
             callContact={this.state.callContact}
             selectedContact={this.state.selectedContact}
             contactList={this.state.contactList}
-            contactsLength={this.state.contactsLength}
             hideModal={this.hideModal}
             modalType={this.state.modalType}
           />
         ) : (
           <div className="App-Container">
-            <SearchContacts contactList={this.state.contactList} filterContacts={this.filterContacts} />
-            <div className="info"><i>Info: <small>Contacts: {this.state.contactsLength} | Selected: {contact}</small></i></div>
-            <ContactContainers contactList={this.state.contactList} selectedContact={this.selectHandler} callContact={this.callHandler} />
+            <div className="Header">Chattap!</div>
+            <SearchContacts contactList={this.state.contactList} filterContacts={this.filterContacts} selectHandler={this.selectHandler} />
+            {/* <div className="info"><i>Info: <small>Contacts: {this.state.contactsLength} | Selected: {contact}</small></i></div> */}
+            <ContactContainers contactList={this.state.contactList} selected={this.state.selectedContact} selectHandler={this.selectHandler} callContact={() => this.modalCtrl("CALL_CONTACT")} />
             {!this.state.selectedContact ? (
-              <Button buttonAction={() => this.openModal("ADD_CONTACT")}>Add Contact</Button>
+              <Button buttonAction={() => this.modalCtrl("ADD_CONTACT")}>Add Contact</Button>
             ):(
-              <Button buttonAction={() => this.openModal("EDIT_CONTACT")}>Edit Contact</Button>
+              <Button buttonAction={() => this.modalCtrl("EDIT_CONTACT")}>Edit Contact</Button>
             )}
           </div>
         )}

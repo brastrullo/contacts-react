@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from './Button';
 
 function EllipsesAnimation(){
   return (
@@ -35,10 +36,10 @@ class CallContactModal extends Component {
     let name = this.props.selectedContact.contactName;
     let num = this.props.selectedContact.contactCell;
     return(
-      <div>
+      <div className="flex-container calling-contact">
         <span className="calling-contact-header">Calling {name}</span>
-        <div>{this.formatNumber(num)}<EllipsesAnimation /></div>
-        <button className="btn Decline-call-btn" onClick={this.hideModal} >&#10006;</button>
+        <div className="calling-contact-num">{this.formatNumber(num)}<EllipsesAnimation /></div>
+        <Button buttonAction={this.hideModal} className="btn-cancel">&#10006;</Button>
       </div>
     );
   }

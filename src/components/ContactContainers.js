@@ -4,31 +4,32 @@ import ContactOptions from './ContactOptions';
 class ContactContainers extends Component {
   constructor(props) {
     super(props);
-    this.state = { contactList: this.props.contactList, selectedContact: null };
+    this.state = { contactList: props.contactList, selected: props.selected };
   }
 
   contactArray = () => {
+    var list = this.props.contactList;
     return (
-      this.props.contactList.map(obj =>
-        <li key={obj.id} id={obj.id} className="Contact-item" onClick={() => this.selectContact(obj.id)}>
+      list.map(obj =>
+        <li key={obj.id} id={obj.id} className={"Contact-item " + ((this.props.selected === obj) ? "selected" : "")} onClick={() => this.selectContact(obj.id)}>
+          {this.props.selected === obj && <div className='Profile-pic'>{obj.contactName.charAt(0)}</div>}
           {obj.contactName}
-          {this.state.selectedContact === obj && <ContactOptions contact={this.state.selectedContact} handleCall={this.props.callContact}/>}
+          {this.props.selected === obj && <ContactOptions contact={this.props.selected} handleCall={this.props.callContact}/>}
         </li>
     ));
   }
   selectContact = (n) => {
     let contactList = this.state.contactList;
     let contact = contactList.find((obj) => obj.id === n);
+    let selectedContainer = document.getElementsByClassName("selected")[0];
 
-    if (this.state.selectedContact === null) {
-      this.setState({selectedContact: contact}, () => this.props.selectedContact(this.state.selectedContact));
-    } else if (this.state.selectedContact.id === n) {
-      this.setState({selectedContact: null}, () => this.props.selectedContact(this.state.selectedContact));
+    if (this.state.selected === null) {
+      this.setState({selected: contact}, () => this.props.selectHandler(contact));
+    } else if (this.state.selected.id === n) {
+      this.setState({selected: null}, () => this.props.selectHandler(null));
     } else {
-      document.getElementsByClassName("selected")[0].classList.remove("selected");
-      this.setState({selectedContact: contact}, () => this.props.selectedContact(this.state.selectedContact));
+      this.setState({selected: contact}, () => this.props.selectHandler(contact));
     }
-    document.getElementById(n) ? document.getElementById(n).classList.toggle("selected") : false;
   }
 
   render() {
